@@ -9,5 +9,7 @@ namespace Database.Entities
 		public double Cost { get; set; }
 		public string? Name { get; set; }
 		public int ImageId { get; set; }
+
+		public virtual ICollection<OrderItem> Orders { get; set; }
 	}
 }

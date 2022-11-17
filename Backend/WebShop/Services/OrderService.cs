@@ -1,6 +1,6 @@
 ﻿using WebShop.DataTransferObjects;
 using WebShop.Repositories;
-using static WebShop.Controllers.CartController;
+using static WebShop.Controllers.OrderController;
 
 namespace WebShop.Services
 {
@@ -18,9 +18,9 @@ namespace WebShop.Services
 			return _orderRepository.GetOrders();
 		}
 
-		public ShoppingCartDTO GetShoppingCart()
+		public double GetTotalPrice()
 		{
-			return _orderRepository.GetShoppingCart();
+			return _orderRepository.GetTotalPrice();
 		}
 
 		public int AddOrder(ItemData order)

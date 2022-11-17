@@ -51,13 +51,14 @@ export default function App(props) {
 			.then(response => setOrders(response))
 			.catch(err => global.alert(`Could not fetch from endpoint GET "https://localhost:7277/Order" make sure it's implemented. \n Error: ${err}`));
 
+			fetchTotalPrice();
 	};
 
 	const fetchTotalPrice = async () => {
-		const result = await fetch('https://localhost:7277/Cart')
+		const result = await fetch('https://localhost:7277/Order/totalprice')
 			.then(response => response.json())
 			.then(response => setTotalPrice(response))
-			.catch(err => global.alert(`Could not fetch from endpoint GET "https://localhost:7277/Cart" make sure it's implemented. \n Error: ${err}`));
+			.catch(err => global.alert(`Could not fetch from endpoint GET "https://localhost:7277/Order/totalprice" make sure it's implemented. \n Error: ${err}`));
 
 	};
 

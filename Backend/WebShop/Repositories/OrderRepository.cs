@@ -1,7 +1,7 @@
 ﻿using Database;
 using Database.Entities;
 using WebShop.DataTransferObjects;
-using static WebShop.Controllers.CartController;
+using static WebShop.Controllers.OrderController;
 
 namespace WebShop.Repositories
 {
@@ -33,26 +33,19 @@ namespace WebShop.Repositories
 			return orders;
 		}
 
-
-		public ShoppingCartDTO GetShoppingCart()
+		public double GetTotalPrice()
 		{
-			var orders = GetOrders();
+			var orders = _dbContext.OrderItems.ToList();
 
-			var shoppingCart = new ShoppingCartDTO
+			var list = orders.Select(x => new
 			{
-				TotalPrice = orders.Sum(x => x.Item.Cost * x.Quantity),
-				CartItems = orders.Select(x => new CartItem
-				{
-					Id = x.Id,
-					Name = x.Item.Name!,
-					Quantity = x.Quantity,
-					Cost = x.Item.Cost
-				}).ToList()
+				Quantity = x.Quantity,
+				Cost = _dbContext.Items.First(i => i.Id == x.ItemId).Cost
+			});
 
-			};
+			var totalPrice = list.Sum(x => x.Quantity * x.Cost);
 
-			return shoppingCart;
-
+			return totalPrice;
 		}
 
 		public int AddOrder(ItemData order)

@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebShop.DataTransferObjects;
 using WebShop.Services;
-using static WebShop.Controllers.CartController;
 
 namespace WebShop.Controllers
 {
@@ -25,6 +24,13 @@ namespace WebShop.Controllers
 			return _orderService.GetOrders();
 		}
 
+		[HttpGet]
+		[Route("totalprice")]
+		public double GetTotalPrice()
+		{
+			return _orderService.GetTotalPrice();
+		}
+
 		[HttpPost]
 		[Route("")]
 		public void AddOrder(ItemData order)
@@ -44,6 +50,13 @@ namespace WebShop.Controllers
 		public void DeleteOrder(int id)
 		{
 			_orderService.DeleteOrder(id);
+		}
+
+
+		public class ItemData
+		{
+			public int ItemId { get; set; }
+			public int Quantity { get; set; }
 		}
 	}
 }
