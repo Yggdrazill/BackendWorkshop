@@ -33,14 +33,14 @@ namespace WebShop.Controllers
 
 		[HttpPost]
 		[Route("")]
-		public void AddOrder(ItemData order)
+		public void AddOrder(OrderItemDTO order)
 		{
 			_orderService.AddOrder(order);
 		}
 
 		[HttpPut]
 		[Route("{id}")]
-		public void UpdateOrder(int id, ItemData order)
+		public void UpdateOrder(int id, OrderItemDTO order)
 		{
 			_orderService.UpdateOrder(id, order);
 		}
@@ -52,11 +52,12 @@ namespace WebShop.Controllers
 			_orderService.DeleteOrder(id);
 		}
 
-
-		public class ItemData
+		[HttpDelete]
+		[Route("")]
+		public void DeleteOrders()
 		{
-			public int ItemId { get; set; }
-			public int Quantity { get; set; }
+			_orderService.ClearShoppingCart();
 		}
+
 	}
 }

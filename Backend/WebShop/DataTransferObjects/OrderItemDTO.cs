@@ -6,7 +6,6 @@ namespace WebShop.DataTransferObjects
 	{
 		public int Id { get; set; }
 		public int Quantity { get; set; }
-
 		public ItemDTO Item { get; set; }
 	}
 }

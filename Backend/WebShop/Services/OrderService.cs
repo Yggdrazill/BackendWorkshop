@@ -1,6 +1,5 @@
 ﻿using WebShop.DataTransferObjects;
 using WebShop.Repositories;
-using static WebShop.Controllers.OrderController;
 
 namespace WebShop.Services
 {
@@ -23,13 +22,13 @@ namespace WebShop.Services
 			return _orderRepository.GetTotalPrice();
 		}
 
-		public int AddOrder(ItemData order)
+		public int AddOrder(OrderItemDTO order)
 		{
 			return _orderRepository.AddOrder(order);
 		}
 
 
-		public void UpdateOrder(int id, ItemData order)
+		public void UpdateOrder(int id, OrderItemDTO order)
 		{
 			_orderRepository.UpdateOrder(id, order);
 		}

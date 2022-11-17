@@ -1,5 +1,6 @@
 .Item {
 	width: 150px;
+	height: 250px;
 	border: 1px solid #ccc;
 	display: inline-block;
 	padding: 20px;

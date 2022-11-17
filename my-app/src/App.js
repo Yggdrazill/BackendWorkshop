@@ -14,7 +14,7 @@ export default function App(props) {
 		const result = await fetch('https://localhost:7277/order', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ItemId: item.id, Quantity: quantity})
+			body: JSON.stringify({Quantity: quantity , Item: { id: item.id, cost: item.cost, name: item.name, imageId: item.imageId }})
 		}).catch(err => global.alert(`Could not fetch from endpoint POST "https://localhost:7277/order" make sure it's implemented. \n Error: ${err}`));
 		await fetchOrders();
 	}
@@ -65,7 +65,7 @@ export default function App(props) {
 	const clearCart = async () => {
 		const result = await fetch('https://localhost:7277/Order', {
 			method: 'DELETE'
-		}).catch(err => global.alert(err));
+		}).catch(err => global.alert(`Could not fetch from endpoint DELETE "https://localhost:7277/Order" make sure it's implemented. \n Error: ${err}`));
 		await fetchOrders();
 	};
 
@@ -117,7 +117,7 @@ export default function App(props) {
 						{orders?.map((order, index) => (
 							<div key={index}>
 								<p className={"order"}>
-									{order.item.name} x {order.quantity} - {order.item.cost * order.quantity}
+									{order.item?.name} x {order.quantity} - {order.item?.cost * order.quantity}
 									<span style={{ marginLeft: 10, cursor: 'pointer' }} onClick={() => handleRemove(order.id)}>{IconTrashCan()}</span>
 								</p>
 							</div>

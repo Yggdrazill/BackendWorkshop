@@ -1,7 +1,6 @@
 ﻿using Database;
 using Database.Entities;
 using WebShop.DataTransferObjects;
-using static WebShop.Controllers.OrderController;
 
 namespace WebShop.Repositories
 {
@@ -24,8 +23,8 @@ namespace WebShop.Repositories
 					Item = new ItemDTO
 					{
 						Id = x.ItemId,
-						Name = x.Item.Name,
 						Cost = x.Item.Cost,
+						Name = x.Item.Name,
 						ImageId = x.Item.ImageId
 					}
 				}).ToList();
@@ -48,11 +47,11 @@ namespace WebShop.Repositories
 			return totalPrice;
 		}
 
-		public int AddOrder(ItemData order)
+		public int AddOrder(OrderItemDTO order)
 		{
 			var entity = new OrderItem
 			{
-				ItemId = order.ItemId,
+				ItemId = order.Item.Id,
 				Quantity = order.Quantity
 			};
 
@@ -63,7 +62,7 @@ namespace WebShop.Repositories
 		}
 
 
-		public void UpdateOrder(int id, ItemData order)
+		public void UpdateOrder(int id, OrderItemDTO order)
 		{
 			var entity = _dbContext.OrderItems.First(x => x.Id == id);
 

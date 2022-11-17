@@ -57,9 +57,9 @@
 	overflow-y: auto;
 	overflow-x: auto;
 	flex-wrap: wrap;
-	max-width: 655px;
+	max-width: 850px;
 	min-width: 230px;
-	height: 500px;
+	height: 650px;
 }
 
 .orderListWrapper {
@@ -76,8 +76,8 @@
 	overflow-x: auto;
 	flex-wrap: wrap;
 	height: 300px;
-	max-width: 655px;
-	min-width: 230px;
+	max-width: 600x;
+	min-width: 400px;
 }
 
 .order {
