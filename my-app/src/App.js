@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import Item from './Item';
+import Item, { NewItem } from './Item';
 
 import './App.css';
 
@@ -11,6 +11,7 @@ export default function App(props) {
 	const [isAdmin, setAdmin] = useState(false);
 
 	const handleBuy = async (item, quantity) => {
+		console.log('hej');
 		const result = await fetch('https://localhost:7277/order', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
@@ -24,6 +25,22 @@ export default function App(props) {
 			method: 'DELETE'
 		}).catch(err => global.alert(`Could not fetch from endpoint DELETE "https://localhost:7277/order/${id}" make sure it's implemented. \n Error: ${err}`));
 		await fetchOrders();
+	}	
+
+	const clearCart = async () => {
+		const result = await fetch('https://localhost:7277/Order', {
+			method: 'DELETE'
+		}).catch(err => global.alert(`Could not fetch from endpoint DELETE "https://localhost:7277/order" make sure it's implemented. \n Error: ${err}`));
+		await fetchOrders();
+	};
+
+	const handleCreateItem = async (name, cost, imageId) => {
+		const result = await fetch('https://localhost:7277/Item', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({Name: name, Cost: cost, ImageId: imageId})
+		}).catch(err => global.alert(`Could not fetch from endpoint POST "https://localhost:7277/Item" make sure it's implemented. \n Error: ${err}`));
+		await fetchItems();
 	}
 
 	const handleEditItem = async (id, cost) => {
@@ -62,12 +79,12 @@ export default function App(props) {
 
 	};
 
-	const clearCart = async () => {
-		const result = await fetch('https://localhost:7277/Order', {
-			method: 'DELETE'
-		}).catch(err => global.alert(`Could not fetch from endpoint DELETE "https://localhost:7277/Order" make sure it's implemented. \n Error: ${err}`));
-		await fetchOrders();
-	};
+	// const clearCart = async () => {
+	// 	const result = await fetch('https://localhost:7277/Order', {
+	// 		method: 'DELETE'
+	// 	}).catch(err => global.alert(`Could not fetch from endpoint DELETE "https://localhost:7277/Order" make sure it's implemented. \n Error: ${err}`));
+	// 	await fetchOrders();
+	// };
 
 	useEffect(() => {
 		fetchItems();
@@ -105,7 +122,6 @@ export default function App(props) {
 				</div>
 				<h3>
 					Varukorg 
-					<input value="Töm" type="button" onClick={clearCart} />
 				</h3>
 				<p>
 					<b>
@@ -125,6 +141,8 @@ export default function App(props) {
 					</div>
 				</div>
 				
+				<input value="Töm varukorg" type="button" onClick={clearCart} />
+				
 			</>
 		);
 	}
@@ -135,19 +153,24 @@ export default function App(props) {
 				<h3>
 					Varor
 				</h3>
-				<div className="itemList">
-					{items?.map(i => {
-					return (
-						<div key={i.id}>
-							<Item
-								id={i.id}
-								imageId={i.imageId}
-								name={i.name}
-								cost={i.cost}
-								onEdit={handleEditItem}
-							/>
-						</div>
-				)})}
+				<div className="itemListWrapper">
+					<div className="itemList">
+						{items?.map(i => {
+							return (
+								<div key={i.id}>
+									<Item
+										id={i.id}
+										imageId={i.imageId}
+										name={i.name}
+										cost={i.cost}
+										onEdit={handleEditItem}
+									/>
+								</div>
+						)})}
+						<NewItem
+							onCreate={handleCreateItem}						
+						/>
+					</div>
 				</div>
 				
 			</>

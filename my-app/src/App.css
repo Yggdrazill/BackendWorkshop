@@ -41,6 +41,7 @@
 	position: absolute;
 	right: 20px;
 	top: 20px;
+	cursor: pointer;
 }
 
 .itemListWrapper {
@@ -57,9 +58,9 @@
 	overflow-y: auto;
 	overflow-x: auto;
 	flex-wrap: wrap;
-	max-width: 850px;
+	max-width: 865px;
 	min-width: 230px;
-	height: 650px;
+	height: 700px;
 }
 
 .orderListWrapper {
@@ -83,6 +84,16 @@
 .order {
 	padding: 0px 5px 0px;
 	text-align: left;
+}
+
+.AddNewItem {
+	width: 150px;
+	border: 1px solid #ccc;
+	display: inline-block;
+	padding: 20px;
+	margin: 10px;
+	text-align: center;
+	cursor: pointer;
 }
 
 @keyframes App-logo-spin {

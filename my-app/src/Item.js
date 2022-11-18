@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import './Item.css';
 
+import NewItemPNG from './newitem.png';
 import IconBitcoin from './bitcoin.png';
 import IconRtx from './rtx.png';
 import IconRc from './revell.jpeg';
@@ -41,7 +42,7 @@ export default function Item(props) {
 			{ props.onEdit != null && (
 				<div>
 					Nytt pris
-					<input id={newCost} value={newCost} type="number" onChange={(input) => setNewCost(input.target.value)} /> 
+					<input className={"NewPriceInput"} id={newCost} value={newCost} min="0" type="number" onChange={(input) => setNewCost(input.target.value)} /> 
 				</div>
 			)}
 			{ props.onEdit != null && <input value="Ändra" type="button" onClick={() => props.onEdit(props.id, newCost)} /> }
@@ -49,10 +50,38 @@ export default function Item(props) {
 	);
 }
 
+export function NewItem(props) {
+	
 
+	const [cost, setCost] = useState(0);
+	const [name, setName] = useState('');
+	const [imageId] = useState(0);
+
+
+	return (
+		<div className="Item">
+			<img alt='' src={IdToIcon(imageId)}/>
+			<p>
+				<b>
+					Välj namn
+				</b>
+				<input className={"NewPriceInput"} value={name} type="string" onChange={(input) => setName(input.target.value)} />
+			</p>
+			<p>
+				<b>
+					Välj pris
+				</b>
+				<input className={"NewPriceInput"} value={cost} min="0" type="number" onChange={(input) => setCost(input.target.value)} />
+			</p>
+			<input value="Spara" type="button" onClick={() => props.onCreate(name, cost, imageId)} />
+		</div>
+	);
+}
 
 function IdToIcon(id) {
 	switch (id) {
+		case 0:
+			return NewItemPNG;
 		case 1:
 			return IconAoE4;
 		case 2:
