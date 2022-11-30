@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.115236b6.chunk.css",
+    "main.js": "/static/js/main.ec5e8f4f.chunk.js",
+    "main.js.map": "/static/js/main.ec5e8f4f.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.f629aff3.js",
+    "runtime-main.js.map": "/static/js/runtime-main.f629aff3.js.map",
+    "static/js/2.428f417f.chunk.js": "/static/js/2.428f417f.chunk.js",
+    "static/js/2.428f417f.chunk.js.map": "/static/js/2.428f417f.chunk.js.map",
+    "static/js/3.9190e863.chunk.js": "/static/js/3.9190e863.chunk.js",
+    "static/js/3.9190e863.chunk.js.map": "/static/js/3.9190e863.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.115236b6.chunk.css.map": "/static/css/main.115236b6.chunk.css.map",
+    "static/js/2.428f417f.chunk.js.LICENSE.txt": "/static/js/2.428f417f.chunk.js.LICENSE.txt",
+    "static/media/aoe4.d20f9983.png": "/static/media/aoe4.d20f9983.png",
+    "static/media/bitcoin.835903f3.png": "/static/media/bitcoin.835903f3.png",
+    "static/media/newitem.d118007d.png": "/static/media/newitem.d118007d.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f629aff3.js",
+    "static/js/2.428f417f.chunk.js",
+    "static/css/main.115236b6.chunk.css",
+    "static/js/main.ec5e8f4f.chunk.js"
+  ]
+}
