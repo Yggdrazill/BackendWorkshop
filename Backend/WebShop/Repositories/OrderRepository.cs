@@ -32,21 +32,6 @@ namespace WebShop.Repositories
 			return orders;
 		}
 
-		public double GetTotalPrice()
-		{
-			var orders = _dbContext.OrderItems.ToList();
-
-			var list = orders.Select(x => new
-			{
-				Quantity = x.Quantity,
-				Cost = _dbContext.Items.First(i => i.Id == x.ItemId).Cost
-			});
-
-			var totalPrice = list.Sum(x => x.Quantity * x.Cost);
-
-			return totalPrice;
-		}
-
 		public int AddOrder(OrderItemDTO order)
 		{
 			var entity = new OrderItem
