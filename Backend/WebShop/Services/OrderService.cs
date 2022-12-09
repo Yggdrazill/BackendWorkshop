@@ -12,6 +12,7 @@ namespace WebShop.Services
 		public OrderService()
 		{
 			_orderRepository = new OrderRepository();
+			_eventLogService = new EventLogService();
 		}
 
 		public List<OrderItemDTO> GetOrders()
@@ -38,6 +39,7 @@ namespace WebShop.Services
 
 		public int AddOrder(OrderItemDTO order)
 		{
+			// Databas loggning här som bonus
 			_eventLogService.LogMessage("Adding order to cart");
 			return _orderRepository.AddOrder(order);
 		}
@@ -53,6 +55,7 @@ namespace WebShop.Services
 
 		public void ClearShoppingCart()
 		{
+			// Databas loggning här som bonus
 			_eventLogService.LogMessage("Cleared shoppingcart");
 			_orderRepository.ClearShoppingCart();
 		}

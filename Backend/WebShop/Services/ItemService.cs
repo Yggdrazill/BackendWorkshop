@@ -15,7 +15,6 @@ namespace WebShop.Services
 			_eventLogService = new EventLogService();
 		}
 
-
 		public List<ItemDTO> GetItems()
 		{
 			return _itemRepository.GetItems();
@@ -28,7 +27,7 @@ namespace WebShop.Services
 
 		public void CreateItem(ItemDTO item)
 		{
-
+			// Databas loggning här som bonus
 			_eventLogService.LogMessage($"Creating new item {item.Name}");
 			_itemRepository.CreateItem(item);
 		}
@@ -41,6 +40,7 @@ namespace WebShop.Services
 
 		public void DeleteItem(int id)
 		{
+			// Databas loggning här som bonus
 			_eventLogService.LogMessage($"Deleting item with id {id}");
 			_itemRepository.DeleteItem(id);
 		}
