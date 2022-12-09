@@ -27,6 +27,7 @@ namespace Database
 
 		public DbSet<Item> Items { get; set; }
 		public DbSet<OrderItem> OrderItems { get; set; }
+		public DbSet<EventLog> EventLogs { get; set; }
 
 	}
 

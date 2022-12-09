@@ -7,6 +7,7 @@ namespace WebShop.Services
 	public class OrderService
 	{
 		private readonly OrderRepository _orderRepository;
+		private readonly EventLogService _eventLogService;
 
 		public OrderService()
 		{
@@ -37,6 +38,7 @@ namespace WebShop.Services
 
 		public int AddOrder(OrderItemDTO order)
 		{
+			_eventLogService.LogMessage("Adding order to cart");
 			return _orderRepository.AddOrder(order);
 		}
 		public void UpdateOrder(int id, OrderItemDTO order)
@@ -51,6 +53,7 @@ namespace WebShop.Services
 
 		public void ClearShoppingCart()
 		{
+			_eventLogService.LogMessage("Cleared shoppingcart");
 			_orderRepository.ClearShoppingCart();
 		}
 

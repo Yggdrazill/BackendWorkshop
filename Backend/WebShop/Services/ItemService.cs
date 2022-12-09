@@ -7,10 +7,12 @@ namespace WebShop.Services
 	public class ItemService
 	{
 		private readonly ItemRepository _itemRepository;
+		private readonly EventLogService _eventLogService;
 
 		public ItemService()
 		{
 			_itemRepository = new ItemRepository();
+			_eventLogService = new EventLogService();
 		}
 
 
@@ -26,9 +28,10 @@ namespace WebShop.Services
 
 		public void CreateItem(ItemDTO item)
 		{
+
+			_eventLogService.LogMessage($"Creating new item {item.Name}");
 			_itemRepository.CreateItem(item);
 		}
-
 
 		public void UpdateItem(int id, ItemDTO item)
 		{
@@ -38,6 +41,7 @@ namespace WebShop.Services
 
 		public void DeleteItem(int id)
 		{
+			_eventLogService.LogMessage($"Deleting item with id {id}");
 			_itemRepository.DeleteItem(id);
 		}
 
